@@ -3,21 +3,24 @@ package com.bridgelabz;
 import java.util.Scanner;
 import java.util.regex.Pattern;
 @FunctionalInterface
-interface MobileNumber {
-    public String validate(String regex, String input);
+/*
+ * Password Rule 1
+ */
+interface Password {
+    public String validate(String regex, String field);
 }
 
 public class UserRegistration {
 
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        System.out.println("Enter the Mobile Number with Country Code: ");
+        System.out.println("Please login using 8 character Password: ");
         String input = sc.next();
-        MobileNumber isValidMobileNumber = (pattern, MobileNumber) -> {
+        Password isValidPassword = (pattern, Password) -> {
 
-            return "The input provided is " + Pattern.compile(MobileNumber).matcher(MobileNumber).matches();
+            return "The input provided is " + Pattern.compile(Password).matcher(Password).matches();
         };
 
-        System.out.println(isValidMobileNumber.validate("^[0-9]{2}\\s{1}[0-9]{10}$", input));
+        System.out.println(isValidPassword.validate("^[a-zA-Z0-9]{8,}$", input));
     }
 }
