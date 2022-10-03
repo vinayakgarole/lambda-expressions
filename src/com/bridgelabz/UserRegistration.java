@@ -3,20 +3,21 @@ package com.bridgelabz;
 import java.util.Scanner;
 import java.util.regex.Pattern;
 @FunctionalInterface
-interface EmailID {
+interface MobileNumber {
     public String validate(String regex, String input);
 }
 
 public class UserRegistration {
+
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        System.out.println("Enter your Email ID: ");
+        System.out.println("Enter the Mobile Number with Country Code: ");
         String input = sc.next();
-        EmailID isValidEmailID = (pattern, emailID) -> {
+        MobileNumber isValidMobileNumber = (pattern, MobileNumber) -> {
 
-            return "The password given is " + Pattern.compile(pattern).matcher(emailID).matches();
+            return "The input provided is " + Pattern.compile(MobileNumber).matcher(MobileNumber).matches();
         };
 
-        System.out.println(isValidEmailID.validate("^[a-zA-Z0-9]+([+_.-][a-zA-Z0-9]+)*[@][a-zA-Z0-9]+[.][a-zA-Z]{2,4}([.][a-zA-Z]{2,4})?", input));
+        System.out.println(isValidMobileNumber.validate("^[0-9]{2}\\s{1}[0-9]{10}$", input));
     }
 }
